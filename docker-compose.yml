@@ -1,0 +1,16 @@
+version: '3'
+services:
+  crontab:
+    build:
+      context: ./
+    image: crontab:latest
+    container_name: crontab
+    hostname: crontab
+    volumes:
+      - ./crontab:/etc/crontab
+      - ./start.sh:/start.sh
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
